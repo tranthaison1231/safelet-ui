@@ -1,12 +1,59 @@
 {
-  "name": "safelet-ui",
+  "name": "todo-list-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --check src",
+    "lint": "eslint --ext .tsx,.ts src/ --fix",
+    "dev": "vite",
+    "ts-check": "tsc",
+    "build": "pnpm run ts-check && vite build"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tranthaison1231/todomvc-2023.git"
+  },
   "author": "Son Tran",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tranthaison1231/todomvc-2023/issues"
+  },
+  "homepage": "https://github.com/tranthaison1231/todomvc-2023#readme",
+  "devDependencies": {
+    "@enouvo/eslint-config-react": "^2.2.0",
+    "@types/react": "^18.2.12",
+    "@types/react-dom": "^18.2.5",
+    "@typescript-eslint/eslint-plugin": "^5.59.11",
+    "@vitejs/plugin-react": "^4.0.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.43.0",
+    "eslint-config-standard-with-typescript": "^35.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^16.0.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "postcss": "^8.4.24",
+    "prettier": "^2.8.8",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^5.1.3",
+    "vite": "^4.3.9",
+    "vite-plugin-svgr": "^3.2.0",
+    "vite-tsconfig-paths": "^4.2.0"
+  },
+  "dependencies": {
+    "@clerk/clerk-react": "^4.20.2",
+    "axios": "^1.4.0",
+    "class-variance-authority": "^0.6.0",
+    "clsx": "^1.2.1",
+    "daisyui": "^3.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.44.3",
+    "react-hot-toast": "^2.4.1",
+    "react-router-dom": "^6.13.0",
+    "recharts": "^2.7.1",
+    "tailwind-merge": "^1.13.2",
+    "vite": "^4.3.9"
+  }
 }
