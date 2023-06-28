@@ -3,20 +3,20 @@ import Login from '@/pages/login'
 
 const router = createBrowserRouter([
   {
-    path: '/login',
-    element: <Login />
+    element: <Login />,
+    path: '/login'
   },
   {
-    path: '/sign-up',
-    element: <div>Sign Up</div>
+    element: <div>Sign Up</div>,
+    path: '/sign-up'
   },
   {
-    path: '/',
-    element: <div>home</div>
+    element: <div>home</div>,
+    path: '/'
   },
   {
-    path: '*',
-    element: <div>404</div>
+    element: <div>404</div>,
+    path: '*'
   }
 ])
 

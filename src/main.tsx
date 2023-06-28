@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import { Toaster } from 'react-hot-toast'
 import App from './App'
-import "./style.css"
+import './style.css'
 
 createRoot(document.getElementById('app')!).render(
   <>
