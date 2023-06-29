@@ -25,10 +25,12 @@ function Login() {
     mode: 'onBlur'
   })
 
-  const onSubmit: SubmitHandler<Inputs> = ({ email, password }) => {
+  const onSubmit: SubmitHandler<Inputs> = ({ email, password }: Inputs) => {
     try {
+      // eslint-disable-next-line no-console
       console.log(email, password)
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(error)
     }
   }
@@ -37,7 +39,7 @@ function Login() {
       <img alt="bg" className="w-1/2" src={bg} />
       <div className="flex flex-col items-center justify-center w-1/2">
         <img alt="logo" className="mb-24" src={logo} />
-        <form className="flex flex-col items-center w-2/3" onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex flex-col items-center w-2/3" onSubmit={event => void handleSubmit(onSubmit)(event)}>
           <h1 className="mb-5 text-4xl text-center">Login</h1>
           <p className="text-center text-primary mb-7">Sign into your account</p>
           <FormItem error={errors.email?.message}>

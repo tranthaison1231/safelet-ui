@@ -6,10 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --check src",
-    "lint": "eslint --ext .tsx,.ts src/ --fix",
+    "format:fix": "prettier --write src .",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint --ext .tsx,.ts src/ --fix",
     "dev": "vite",
     "ts-check": "tsc",
-    "build": "pnpm run ts-check && vite build"
+    "build": "pnpm run ts-check && vite build",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -47,6 +50,7 @@
     "class-variance-authority": "^0.6.1",
     "clsx": "^1.2.1",
     "daisyui": "^3.1.6",
+    "husky": "^8.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.1",
