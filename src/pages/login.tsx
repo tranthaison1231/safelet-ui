@@ -25,23 +25,23 @@ function Login() {
     mode: 'onBlur'
   })
 
-  const onSubmit: SubmitHandler<Inputs> = ({ email, password }) => {
+  const onSubmit: SubmitHandler<Inputs> = ({ email, password }: Inputs) => {
     try {
+      // eslint-disable-next-line no-console
       console.log(email, password)
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(error)
     }
   }
-
   return (
-    <div className="flex h-screen items-center">
+    <div className="flex items-center h-screen mx-auto">
       <img alt="bg" className="w-1/2" src={bg} />
-      <div className="flex justify-center items-center w-1/2 flex-col">
+      <div className="flex flex-col items-center justify-center w-1/2">
         <img alt="logo" className="mb-24" src={logo} />
-
-        <form className="w-2/3 flex flex-col items-center" onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex flex-col items-center w-2/3" onSubmit={event => void handleSubmit(onSubmit)(event)}>
           <h1 className="mb-5 text-4xl text-center">Login</h1>
-          <p className="text-primary mb-7 text-center">Sign into your account</p>
+          <p className="text-center text-primary mb-7">Sign into your account</p>
           <FormItem error={errors.email?.message}>
             <Input
               intent="secondary"
@@ -70,7 +70,9 @@ function Login() {
               })}
             />
           </FormItem>
-          <Button className="w-52 mt-12" intent="primary"> Login </Button>
+          <Button className="w-52 mt-12" intent="primary">
+            Login
+          </Button>
         </form>
       </div>
     </div>

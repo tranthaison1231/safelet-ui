@@ -1,6 +1,8 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import Dashboard from '@/pages/dashboard'
 import Login from '@/pages/login'
-import Maintenance from './pages/maintenance'
+import Maintenance from '@/pages/maintenance'
+import Register from '@/pages/register'
 
 const router = createBrowserRouter([
   {
@@ -8,15 +10,15 @@ const router = createBrowserRouter([
     path: '/login'
   },
   {
+    element: <Register />,
+    path: '/register'
+  },
+  {
     element: <Maintenance />,
     path: '/maintenance'
   },
   {
-    element: <div>Sign Up</div>,
-    path: '/sign-up'
-  },
-  {
-    element: <div>home</div>,
+    element: <Dashboard />,
     path: '/'
   },
   {

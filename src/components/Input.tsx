@@ -4,18 +4,18 @@ import { type VariantProps, cva } from 'class-variance-authority'
 const input = cva('input', {
   compoundVariants: [{ className: ['w-full', 'outline-none', 'rounded-lg', 'px-4', 'py-6'] }],
   defaultVariants: {
-    intent: 'default',
-    inputSize: 'medium'
+    inputSize: 'medium',
+    intent: 'default'
   },
   variants: {
     inputSize: {
-      small: ['px-4', 'py-2'],
-      medium: ['px-4', 'py-6']
+      medium: ['px-4', 'py-6'],
+      small: ['px-4', 'py-2']
     },
     intent: {
+      default: ['text-primary', 'placeholder-primary'],
       primary: ['bg-primary', 'text-white', 'placeholder-white', 'border-none'],
-      secondary: ['bg-secondary', 'border-none'],
-      default: ['text-primary', 'placeholder-primary']
+      secondary: ['bg-secondary', 'border-none']
     }
   }
 })
