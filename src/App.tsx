@@ -1,8 +1,10 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import PrivateLayout from '@/layouts/PrivateLayout'
 import Dashboard from '@/pages/dashboard'
 import Login from '@/pages/login'
 import Maintenance from '@/pages/maintenance'
 import Register from '@/pages/register'
+import UserAppInstalled from '@/pages/user-app-installed'
 
 const router = createBrowserRouter([
   {
@@ -18,7 +20,17 @@ const router = createBrowserRouter([
     path: '/maintenance'
   },
   {
-    element: <Dashboard />,
+    children: [
+      {
+        element: <UserAppInstalled />,
+        path: '/user-app-installed'
+      },
+      {
+        element: <Dashboard />,
+        path: '/'
+      }
+    ],
+    element: <PrivateLayout />,
     path: '/'
   },
   {

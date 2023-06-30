@@ -1,10 +1,13 @@
 import type { SubmitHandler } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import bg from '@/assets/images/left-bg.png'
 import logo from '@/assets/images/logo.png'
 import Button from '@/components/Button'
 import FormItem from '@/components/FormItem'
 import Input from '@/components/Input'
+import { showError } from '@/utils/showError'
+import { setToken } from '@/utils/token'
 import { validator } from '@/utils/validator'
 
 interface Inputs {
@@ -13,6 +16,7 @@ interface Inputs {
 }
 
 function Login() {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -27,11 +31,12 @@ function Login() {
 
   const onSubmit: SubmitHandler<Inputs> = ({ email, password }: Inputs) => {
     try {
-      // eslint-disable-next-line no-console
-      console.log(email, password)
+      if (email === 'son.tran@enouvo.com' && password === '!12ABCDabcd') {
+        setToken('123456789')
+        navigate('/')
+      }
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log(error)
+      showError('Login failed')
     }
   }
   return (
