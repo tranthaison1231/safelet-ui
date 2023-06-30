@@ -6,7 +6,8 @@ export default {
       colors: {
         primary: '#EC6453',
         secondary: '#E6E6E6',
-        error: '#FF0000'
+        error: '#FF0000',
+        white: '#FFFFFF'
       }
     }
   },

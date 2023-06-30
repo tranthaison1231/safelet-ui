@@ -70,7 +70,9 @@ function Login() {
               })}
             />
           </FormItem>
-          <Button className="mt-12 w-52"> Login </Button>
+          <Button className="w-52 mt-12" intent="primary">
+            Login
+          </Button>
         </form>
       </div>
     </div>

@@ -5,10 +5,8 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --check src",
-    "format:fix": "prettier --write src .",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "eslint --ext .tsx,.ts src/ --fix",
+    "format": "prettier --write src .",
+    "lint": "eslint --ext .tsx,.ts src/ --fix",
     "dev": "vite",
     "ts-check": "tsc",
     "build": "pnpm run ts-check && vite build",
