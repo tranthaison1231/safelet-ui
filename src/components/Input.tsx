@@ -2,32 +2,27 @@ import { forwardRef } from 'react'
 import { type VariantProps, cva } from 'class-variance-authority'
 
 const input = cva('input', {
-  compoundVariants: [{ className: ['outline-none', 'rounded-lg'] }],
+  compoundVariants: [{ className: ['w-full', 'outline-none', 'rounded-lg', 'px-4', 'py-6'] }],
   defaultVariants: {
-    intent: 'primary'
+    intent: 'default',
+    inputSize: 'medium'
   },
   variants: {
+    inputSize: {
+      small: ['px-4', 'py-2'],
+      medium: ['px-4', 'py-6']
+    },
     intent: {
-      maintain: [
-        'bg-transparent',
-        'text-white',
-        'placeholder-white',
-        'border',
-        'border-white',
-        'px-2',
-        'py-4',
-        'w-96',
-        'h-14'
-      ],
-      primary: ['bg-primary', 'text-white', 'placeholder-white', 'border-none', 'px-4', 'py-6'],
-      secondary: ['bg-secondary', 'border-none', 'px-4', 'py-6']
+      primary: ['bg-primary', 'text-white', 'placeholder-white', 'border-none'],
+      secondary: ['bg-secondary', 'border-none'],
+      default: ['text-primary', 'placeholder-primary']
     }
   }
 })
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, VariantProps<typeof input> {}
 
-function Input({ intent, className, ...rest }: InputProps, ref: React.LegacyRef<HTMLInputElement>) {
-  return <input className={input({ className, intent })} {...rest} ref={ref} />
+function Input({ intent, inputSize, className, ...rest }: InputProps, ref: React.LegacyRef<HTMLInputElement>) {
+  return <input className={input({ className, inputSize, intent })} {...rest} ref={ref} />
 }
 export default forwardRef(Input)

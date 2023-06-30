@@ -1,10 +1,9 @@
-import type { SubmitHandler } from 'react-hook-form'
-import { useForm } from 'react-hook-form'
-import maintenance from '@/assets/images/maintenance-img.png'
+import maintenance from '@/assets/images/maintenance.png'
 import Button from '@/components/Button'
-import FormItem from '@/components/FormItem'
 import Input from '@/components/Input'
 import { validator } from '@/utils/validator'
+import type { SubmitHandler } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
 interface Inputs {
   email: string
@@ -39,11 +38,11 @@ function Maintenance() {
         </p>
         <p className="text-3xl font-bold leading-tight mt-4">00 : 04 : 13 : 39</p>
         <form className="flex mt-6 gap-2" onSubmit={handleSubmit(onSubmit)}>
-          <FormItem error={errors.email?.message}>
             <Input
-              intent="maintain"
               placeholder="Enter your mail"
               type="email"
+              inputSize="small"
+              className="bg-transparent border border-white placeholder-white text-white"
               {...register('email', {
                 pattern: {
                   message: 'Please enter a valid email',
@@ -52,8 +51,7 @@ function Maintenance() {
                 required: 'Email is required'
               })}
             />
-          </FormItem>
-          <Button className="whitespace-nowrap" intent="maintain">
+          <Button size="small" className="whitespace-nowrap h-fit">
             Notify Me
           </Button>
         </form>
