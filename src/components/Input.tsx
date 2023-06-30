@@ -2,14 +2,25 @@ import { forwardRef } from 'react'
 import { type VariantProps, cva } from 'class-variance-authority'
 
 const input = cva('input', {
-  compoundVariants: [{ className: ['w-full', 'outline-none', 'border-none', 'rounded-lg', 'px-4', 'py-6'] }],
+  compoundVariants: [{ className: ['outline-none', 'rounded-lg'] }],
   defaultVariants: {
     intent: 'primary'
   },
   variants: {
     intent: {
-      primary: ['bg-primary', 'text-white', 'placeholder-white'],
-      secondary: ['bg-secondary']
+      maintain: [
+        'bg-transparent',
+        'text-white',
+        'placeholder-white',
+        'border',
+        'border-white',
+        'px-2',
+        'py-4',
+        'w-96',
+        'h-14'
+      ],
+      primary: ['bg-primary', 'text-white', 'placeholder-white', 'border-none', 'px-4', 'py-6'],
+      secondary: ['bg-secondary', 'border-none', 'px-4', 'py-6']
     }
   }
 })
