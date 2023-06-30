@@ -1,4 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import Dashboard from '@/pages/dashboard'
 import Login from '@/pages/login'
 import Maintenance from '@/pages/maintenance'
 import Register from '@/pages/register'
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
     path: '/maintenance'
   },
   {
-    element: <div>home</div>,
+    element: <Dashboard />,
     path: '/'
   },
   {

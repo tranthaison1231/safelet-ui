@@ -35,7 +35,7 @@ function Login() {
     }
   }
   return (
-    <div className="flex items-center h-screen max-w-[1440px] mx-auto">
+    <div className="flex items-center h-screen mx-auto">
       <img alt="bg" className="w-1/2" src={bg} />
       <div className="flex flex-col items-center justify-center w-1/2">
         <img alt="logo" className="mb-24" src={logo} />
