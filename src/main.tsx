@@ -1,14 +1,12 @@
 import { createRoot } from 'react-dom/client'
 import { Toaster } from 'react-hot-toast'
-import { BrowserRouter } from 'react-router-dom'
+import App from './App'
+import './style.css'
 
-function App(): JSX.Element {
-  return <h1> Hello</h1>
-}
-
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 createRoot(document.getElementById('app')!).render(
-  <BrowserRouter>
+  <>
     <App />
     <Toaster position="top-right" />
-  </BrowserRouter>
+  </>
 )
