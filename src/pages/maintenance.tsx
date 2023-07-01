@@ -25,17 +25,17 @@ function Maintenance() {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col items-center justify-center">
       <img alt="Maintenance" className="pt-40" src={maintenance} />
-      <div className="w-full flex flex-col justify-center items-center bg-primary mt-2 text-white py-16">
+      <div className="flex flex-col items-center justify-center w-full py-16 mt-2 text-white bg-primary">
         <p className="text-4xl font-bold">Hang on! We are under maintenance</p>
-        <p className="text-base font-normal mt-4">
+        <p className="mt-4 text-base font-normal">
           It will not take a long time till we get the error fiked. We wii live again in
         </p>
-        <p className="text-3xl font-bold leading-tight mt-4">00 : 04 : 13 : 39</p>
-        <form className="flex mt-6 gap-2" onSubmit={handleSubmit(onSubmit)}>
+        <p className="mt-4 text-3xl font-bold leading-tight">00 : 04 : 13 : 39</p>
+        <form className="flex gap-2 mt-6" onSubmit={handleSubmit(onSubmit)}>
           <Input
-            className="bg-transparent border border-white placeholder-white text-white"
+            className="text-white placeholder-white bg-transparent border border-white"
             inputSize="small"
             placeholder="Enter your mail"
             type="email"
