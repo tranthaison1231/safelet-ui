@@ -1,3 +1,6 @@
 {
-  "extends": ["@enouvo/eslint-config-react"]
+  "extends": ["@enouvo/eslint-config-react"],
+  "rules": {
+    "@typescript-eslint/naming-convention": "off"
+  }
 }
