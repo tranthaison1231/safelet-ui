@@ -1,52 +1,74 @@
-import { createElement } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { ReactComponent as DashboardIcon } from '@/assets/svgs/dashboard.svg'
-import { ReactComponent as HomeIcon } from '@/assets/svgs/home.svg'
-import { ReactComponent as ShieldIcon } from '@/assets/svgs/shield.svg'
-import { ReactComponent as UserShieldIcon } from '@/assets/svgs/user-shield.svg'
+import DashboardIcon from '@/assets/svgs/dashboard.svg'
+import HomeIcon from '@/assets/svgs/home.svg'
+import ShieldIcon from '@/assets/svgs/shield.svg'
+import UserShieldIcon from '@/assets/svgs/user-shield.svg'
 import { cn } from '@/utils/cn'
 
 function SideBar() {
   const { pathname } = useLocation()
   const SIDE_BAR = [
     {
-      icon: DashboardIcon,
+      icon: {
+        id: 'dashboard',
+        url: DashboardIcon
+      },
       path: '/',
       title: 'Dashboard'
     },
     {
-      icon: HomeIcon,
+      icon: {
+        id: 'home',
+        url: HomeIcon
+      },
       path: '/user-app-installed',
       title: 'User App Installed'
     },
     {
-      icon: ShieldIcon,
-
+      icon: {
+        id: 'shield',
+        url: ShieldIcon
+      },
       path: '/user-have-guardian',
       title: 'User have guardian'
     },
     {
-      icon: UserShieldIcon,
+      icon: {
+        id: 'user-shield',
+        url: UserShieldIcon
+      },
       path: '/user-guardian',
       title: 'Number of guardian'
     },
     {
-      icon: HomeIcon,
+      icon: {
+        id: 'user-shield',
+        url: UserShieldIcon
+      },
       path: '/user-connect-safe',
       title: 'User connect safe'
     },
     {
-      icon: HomeIcon,
+      icon: {
+        id: 'user-shield',
+        url: UserShieldIcon
+      },
       path: '/user-connect-safe',
       title: 'Send out alarm'
     },
     {
-      icon: HomeIcon,
+      icon: {
+        id: 'user-shield',
+        url: UserShieldIcon
+      },
       path: '/user-connect-safe',
       title: 'Received alarm'
     },
     {
-      icon: HomeIcon,
+      icon: {
+        id: 'user-shield',
+        url: UserShieldIcon
+      },
       path: '/user-connect-safe',
       title: 'User per country'
     }
@@ -61,11 +83,14 @@ function SideBar() {
           key={item.title}
           to={item.path}
         >
-          {createElement(item.icon, {
-            className: cn('mr-2.5', {
-              'text-white': item.path === pathname
-            })
-          })}
+          <svg className="w-5 h-5 mr-2.5">
+            <use
+              className={cn({
+                'text-white': item.path === pathname
+              })}
+              href={`${item.icon.url}#${item.icon.id}`}
+            />
+          </svg>
           {item.title}
         </Link>
       ))}
