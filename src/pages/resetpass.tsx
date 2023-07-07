@@ -21,7 +21,7 @@ function Resetpass() {
               Enter your email address and we’ll send you an email with instructions to reset your password
             </p>
             <div className="font-['Inter'] leading-[28px] text-[#8a92a6] self-start relative w-10">Email</div>
-            <input className="border-solid border-primary bg-white self-stretch mb-8 relative h-10 shrink-0 border rounded" />
+            <input className="border-solid border-primary bg-white self-stretch mb-8 relative h-10 shrink-0 border rounded px-3" />
             <Button className="w-52 mt-12" intent="primary">
               Reset
             </Button>
