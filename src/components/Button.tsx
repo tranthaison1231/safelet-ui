@@ -1,7 +1,8 @@
 import { type VariantProps, cva } from 'class-variance-authority'
+import Loading from './Loading'
 
 const btn = cva('button', {
-  compoundVariants: [{ className: ['rounded-lg'] }],
+  compoundVariants: [{ className: ['rounded-lg', 'flex', 'justify-center'] }],
   defaultVariants: {
     intent: 'default',
     size: 'medium'
@@ -19,10 +20,16 @@ const btn = cva('button', {
   }
 })
 
-export interface InputProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof btn> {}
+export interface InputProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof btn> {
+  loading?: boolean
+}
 
-function Button({ intent, size, className, ...rest }: InputProps) {
-  // eslint-disable-next-line react/button-has-type
-  return <button className={btn({ className, intent, size })} {...rest} />
+function Button({ intent, loading, children,  size, className, ...rest }: InputProps) {
+  return (
+    <button className={btn({ className, intent, size })} {...rest}>
+      {loading && <Loading />}
+      {children}
+    </button>
+  )
 }
 export default Button
