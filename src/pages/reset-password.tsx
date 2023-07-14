@@ -11,7 +11,7 @@ function ResetPassword() {
               Reset Password
             </h3>
             <p className="text-center font-['Poppins'] text-[#8a92a6] self-stretch relative mb-2 mx-1">
-              Enter your new password and 
+              Enter your new password 
             </p>
             <div className="font-['Inter'] leading-[28px] text-[#8a92a6] self-start relative">New Password</div>
             <input className="border-solid border-primary bg-white self-stretch mb-8 relative h-10 shrink-0 border rounded px-3" type="password" />
