@@ -1,80 +1,68 @@
+import { createElement } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import DashboardIcon from '@/assets/svgs/dashboard.svg'
-import HomeIcon from '@/assets/svgs/home.svg'
-import ShieldIcon from '@/assets/svgs/shield.svg'
-import UserShieldIcon from '@/assets/svgs/user-shield.svg'
+import { ReactComponent as ActivityIcon } from '@/assets/svgs/activity.svg'
+import { ReactComponent as CountryIcon } from '@/assets/svgs/country.svg'
+import { ReactComponent as DashboardIcon } from '@/assets/svgs/dashboard.svg'
+import { ReactComponent as HomeIcon } from '@/assets/svgs/home.svg'
+import { ReactComponent as ReceivedAlarmIcon } from '@/assets/svgs/received-alarm..svg'
+import { ReactComponent as SendAlarmIcon } from '@/assets/svgs/send-alarm.svg'
+import { ReactComponent as ShieldIcon } from '@/assets/svgs/shield.svg'
+import { ReactComponent as UserSafeIcon } from '@/assets/svgs/user-safe.svg'
+import { ReactComponent as UserShieldIcon } from '@/assets/svgs/user-shield.svg'
 import { cn } from '@/utils/cn'
 
 function SideBar() {
   const { pathname } = useLocation()
   const SIDE_BAR = [
     {
-      icon: {
-        id: 'dashboard',
-        url: DashboardIcon
-      },
+      icon: DashboardIcon,
       path: '/',
       title: 'Dashboard'
     },
     {
-      icon: {
-        id: 'home',
-        url: HomeIcon
-      },
+      icon: HomeIcon,
       path: '/user-app-installed',
       title: 'User App Installed'
     },
     {
-      icon: {
-        id: 'shield',
-        url: ShieldIcon
-      },
+      icon: ShieldIcon,
+
       path: '/user-have-guardian',
       title: 'User have guardian'
     },
     {
-      icon: {
-        id: 'user-shield',
-        url: UserShieldIcon
-      },
+      icon: UserShieldIcon,
       path: '/user-guardian',
       title: 'Number of guardian'
     },
     {
-      icon: {
-        id: 'user-shield',
-        url: UserShieldIcon
-      },
+      icon: UserSafeIcon,
       path: '/user-connect-safe',
       title: 'User connect safe'
     },
     {
-      icon: {
-        id: 'user-shield',
-        url: UserShieldIcon
-      },
+      icon: ActivityIcon,
+      path: '/user-activity',
+      title: 'User Last Week Activity'
+    },
+    {
+      icon: SendAlarmIcon,
       path: '/user-connect-safe',
       title: 'Send out alarm'
     },
     {
-      icon: {
-        id: 'user-shield',
-        url: UserShieldIcon
-      },
+      icon: ReceivedAlarmIcon,
       path: '/user-connect-safe',
       title: 'Received alarm'
     },
     {
-      icon: {
-        id: 'user-shield',
-        url: UserShieldIcon
-      },
+      icon: CountryIcon,
       path: '/user-connect-safe',
       title: 'User per country'
     }
   ]
   return (
-    <div className="rounded-2xl p-4 bg-neutral-200 w-1/5">
+    <div className="w-full p-4 rounded-2xl bg-neutral-200">
       {SIDE_BAR.map(item => (
         <Link
           className={cn('p-2.5 flex', {
@@ -83,14 +71,11 @@ function SideBar() {
           key={item.title}
           to={item.path}
         >
-          <svg className="w-5 h-5 mr-2.5">
-            <use
-              className={cn({
-                'text-white': item.path === pathname
-              })}
-              href={`${item.icon.url}#${item.icon.id}`}
-            />
-          </svg>
+          {createElement(item.icon, {
+            className: cn('mr-2.5', {
+              'text-white': item.path === pathname
+            })
+          })}
           {item.title}
         </Link>
       ))}
