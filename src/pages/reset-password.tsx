@@ -1,5 +1,4 @@
 import bg from '@/assets/images/left-bg.png'
-import rd from '@/assets/images/rendit.png'
 import Button from '@/components/Button'
 
 function ResetPassword() {
@@ -8,12 +7,6 @@ function ResetPassword() {
       <div className="overflow-hidden bg-white relative flex items-center h-screen mx-auto">
         <div className="flex flex-col items-center justify-center w-1/2">
           <div className="flex flex-col justify-start gap-2 relative w-2/3 items-center ">
-            <div className="self-start flex flex-row justify-start mb-4 gap-2 relative items-center">
-              <img alt="rd" className="min-h-0 min-w-0 relative w-6 shrink-0" src={rd} />
-              <h2 className="whitespace-nowrap text-3xl font-['Inter'] leading-[42.9px] text-[#232d42] relative w-32">
-                Hope Ui
-              </h2>
-            </div>
             <h3 className="whitespace-nowrap text-4xl font-['Inter'] font-medium text-[#04040b] mb-2 relative w-2/3">
               Reset Password
             </h3>
