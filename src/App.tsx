@@ -5,7 +5,8 @@ import Login from '@/pages/login'
 import Maintenance from '@/pages/maintenance'
 import Register from '@/pages/register'
 import UserAppInstalled from '@/pages/user-app-installed'
-import Resetpass from './pages/resetpass'
+import ResetPassword from './pages/reset-password'
+import ForgotPassword from './pages/forgot-password'
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,11 @@ const router = createBrowserRouter([
     path: '/register'
   },
   {
-    element: <Resetpass />,
+    element: <ForgotPassword />,
+    path: '/forgot-password'
+  },
+  {
+    element: <ResetPassword />,
     path: '/reset-password'
   },
   {

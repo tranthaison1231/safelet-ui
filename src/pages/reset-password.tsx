@@ -2,7 +2,7 @@ import bg from '@/assets/images/left-bg.png'
 import rd from '@/assets/images/rendit.png'
 import Button from '@/components/Button'
 
-function Resetpass() {
+function ResetPassword() {
   return (
     <>
       <div className="overflow-hidden bg-white relative flex items-center h-screen mx-auto">
@@ -18,10 +18,10 @@ function Resetpass() {
               Reset Password
             </h3>
             <p className="text-center font-['Poppins'] text-[#8a92a6] self-stretch relative mb-2 mx-1">
-              Enter your email address and we’ll send you an email with instructions to reset your password
+              Enter your new password and 
             </p>
-            <div className="font-['Inter'] leading-[28px] text-[#8a92a6] self-start relative w-10">Email</div>
-            <input className="border-solid border-primary bg-white self-stretch mb-8 relative h-10 shrink-0 border rounded px-3" />
+            <div className="font-['Inter'] leading-[28px] text-[#8a92a6] self-start relative">New Password</div>
+            <input className="border-solid border-primary bg-white self-stretch mb-8 relative h-10 shrink-0 border rounded px-3" type="password" />
             <Button className="w-52 mt-12" intent="primary">
               Reset
             </Button>
@@ -33,4 +33,4 @@ function Resetpass() {
   )
 }
 
-export default Resetpass
+export default ResetPassword
