@@ -4,13 +4,11 @@ import Button from '@/components/Button'
 import FormItem from '@/components/FormItem'
 import Input from '@/components/Input'
 import { validator } from '@/utils/validator'
+import { showError } from '@/utils/showError'
+import { RegisterParams, signUp } from '@/api/auth'
+import toast from 'react-hot-toast'
 
-interface FromRegister {
-  firstName: string
-  lastName: string
-  phone: string
-  email: string
-  password: string
+interface FromRegister extends RegisterParams {
   confirmPassword: string
   agree: boolean
 }
@@ -24,13 +22,13 @@ export default function Register() {
     mode: 'onBlur'
   })
 
-  const onSubmit: SubmitHandler<FromRegister> = ({ email, password }) => {
+  const onSubmit: SubmitHandler<FromRegister> = async ({ agree, confirmPassword, ...params}) => {
     try {
-      // eslint-disable-next-line no-console
-      console.log(email, password)
+      if(!agree) return showError('Please agree with the terms and conditions.')
+      await signUp(params)
+      toast.success('Sign up successfully! Please check your email to verify your account.')
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log(error)
+      showError(error)
     }
   }
   return (
@@ -69,12 +67,12 @@ export default function Register() {
                 })}
               />
             </FormItem>
-            <FormItem error={errors.phone?.message} label="Phone number">
+            <FormItem error={errors.phoneNumber?.message} label="Phone number">
               <Input
                 intent="secondary"
                 placeholder="Phone number"
                 type="text"
-                {...register('phone', {
+                {...register('phoneNumber', {
                   pattern: {
                     message: 'Phone number not valid!',
                     value: validator.phoneNumber
@@ -101,7 +99,7 @@ export default function Register() {
               <Input
                 intent="secondary"
                 placeholder="password"
-                type="text"
+                type="password"
                 {...register('password', {
                   required: 'Password is require!'
                 })}
@@ -111,7 +109,7 @@ export default function Register() {
               <Input
                 intent="secondary"
                 placeholder="Confirm Password"
-                type="text"
+                type="password"
                 {...register('confirmPassword', {
                   required: {
                     message: 'Confirm password is require!',

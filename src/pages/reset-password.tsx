@@ -29,12 +29,11 @@ function ResetPassword() {
     mode: 'onBlur'
   })
 
-
-  const onSubmit: SubmitHandler<Inputs> = async ({  password }: Inputs) => {
+  const onSubmit: SubmitHandler<Inputs> = async ({ password }: Inputs) => {
     try {
       setIsLoading(true)
       const token = searchParams.get('token')
-      if(!token) return showError('Invalid token')
+      if (!token) return showError('Invalid token')
       const data = await resetPassword({
         password,
         token

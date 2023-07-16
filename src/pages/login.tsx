@@ -1,6 +1,4 @@
-import type { SubmitHandler } from 'react-hook-form'
-import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { signIn } from '@/api/auth'
 import bg from '@/assets/images/left-bg.png'
 import logo from '@/assets/images/logo.png'
 import Button from '@/components/Button'
@@ -9,6 +7,10 @@ import Input from '@/components/Input'
 import { showError } from '@/utils/showError'
 import { setToken } from '@/utils/token'
 import { validator } from '@/utils/validator'
+import { useState } from 'react'
+import type { SubmitHandler } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 interface Inputs {
   email: string
@@ -16,6 +18,7 @@ interface Inputs {
 }
 
 function Login() {
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
   const {
     register,
@@ -29,14 +32,20 @@ function Login() {
     mode: 'onBlur'
   })
 
-  const onSubmit: SubmitHandler<Inputs> = ({ email, password }: Inputs) => {
+  const onSubmit: SubmitHandler<Inputs> = async ({ email, password }: Inputs) => {
     try {
-      if (email === 'son.tran@enouvo.com' && password === '!12ABCDabcd') {
-        setToken('123456789')
-        navigate('/')
-      }
+      setIsLoading(true)
+      const { data } = await signIn({
+        email,
+        password
+      })
+
+      setToken(data.token)
+      navigate('/')
     } catch (error) {
-      showError('Login failed')
+      showError(error)
+    } finally {
+      setIsLoading(false)
     }
   }
   return (
@@ -75,7 +84,7 @@ function Login() {
               })}
             />
           </FormItem>
-          <Button className="w-52 mt-12" intent="primary">
+          <Button className="w-52 mt-12" intent="primary" loading={isLoading}>
             Login
           </Button>
         </form>

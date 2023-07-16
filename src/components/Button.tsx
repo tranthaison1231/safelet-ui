@@ -24,7 +24,7 @@ export interface InputProps extends React.ButtonHTMLAttributes<HTMLButtonElement
   loading?: boolean
 }
 
-function Button({ intent, loading, children,  size, className, ...rest }: InputProps) {
+function Button({ intent, loading, children, size, className, ...rest }: InputProps) {
   return (
     <button className={btn({ className, intent, size })} {...rest}>
       {loading && <Loading />}
