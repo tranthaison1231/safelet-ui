@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-plus-operands */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react'
 import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts'
 import { ReactComponent as ArrowUpIcon } from '@/assets/svgs/arrowup.svg'
@@ -10,7 +8,14 @@ interface IGuardianData {
   users: number
   percentage?: number
 }
-
+interface IPieChartData {
+  cx: number
+  cy: number
+  midAngle: number
+  innerRadius: number
+  outerRadius: number
+  percent: number
+}
 const GUARDIAN_DATA: IGuardianData[] = [
   {
     newUser: 378,
@@ -66,7 +71,7 @@ export default function GuardianChart() {
   }
   const RADIAN = Math.PI / 180
 
-  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: any) => {
+  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: IPieChartData) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5
     const x = cx + radius * Math.cos(-midAngle * RADIAN)
     const y = cy + radius * Math.sin(-midAngle * RADIAN)

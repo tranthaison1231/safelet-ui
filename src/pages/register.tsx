@@ -34,10 +34,10 @@ export default function Register() {
     }
   }
   return (
-    <div className="mx-auto flex items-center h-screen px-4">
+    <div className="flex items-center h-screen px-4 mx-auto">
       <img alt="bg" className="hidden w-1/2 sm:block" src={bg} />
-      <div className="w-1/2 flex justify-center">
-        <form className="flex flex-col items-center gap-5 w-2/3" onSubmit={event => void handleSubmit(onSubmit)(event)}>
+      <div className="flex justify-center w-1/2">
+        <form className="flex flex-col items-center w-2/3 gap-5" onSubmit={event => void handleSubmit(onSubmit)(event)}>
           <h1 className="text-3xl font-medium">Sign Up</h1>
           <p className="text-primary">Create your Hope UI account</p>
           <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
