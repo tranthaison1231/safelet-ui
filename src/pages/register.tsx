@@ -22,9 +22,9 @@ export default function Register() {
     mode: 'onBlur'
   })
 
-  const onSubmit: SubmitHandler<FromRegister> = async ({ agree, confirmPassword, ...params}) => {
+  const onSubmit: SubmitHandler<FromRegister> = async ({ agree, confirmPassword, ...params }) => {
     try {
-      if(!agree) return showError('Please agree with the terms and conditions.')
+      if (!agree) return showError('Please agree with the terms and conditions.')
       await signUp(params)
       toast.success('Sign up successfully! Please check your email to verify your account.')
     } catch (error) {
@@ -35,7 +35,7 @@ export default function Register() {
     <div className="mx-auto flex items-center h-screen px-4">
       <img alt="bg" className="hidden w-1/2 sm:block" src={bg} />
       <div className="w-1/2 flex justify-center">
-        <form className="flex flex-col items-center gap-5 w-2/3" onSubmit={event => void handleSubmit(onSubmit)(event)}>
+        <form className="flex flex-col items-center gap-5 w-2/3" onSubmit={handleSubmit(onSubmit)}>
           <h1 className="text-3xl font-medium">Sign Up</h1>
           <p className="text-primary">Create your Hope UI account</p>
           <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">

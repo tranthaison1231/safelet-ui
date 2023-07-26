@@ -1,15 +1,23 @@
 import { request } from '@/utils/request'
 
-export const signIn = (data: { email: string; password: string }) => {
-  return request.post('/sign-in', data)
-}
-
 export interface RegisterParams {
   email: string
   password: string
   firstName: string
   lastName: string
   phoneNumber: string
+}
+
+export interface User {
+  _id: number
+  email: string
+  firstName: string
+  avatarURL: string
+  lastName: string
+}
+
+export const signIn = (data: { email: string; password: string }) => {
+  return request.post('/sign-in', data)
 }
 
 export const signUp = (data: RegisterParams) => {
@@ -34,4 +42,17 @@ export const resetPassword = (data: ResetPasswordParams) => {
       }
     }
   )
+}
+
+export const getProfile = () => {
+  return request.get<{ user: User }>('/profile')
+}
+
+interface UpdatedUserDto {
+  phoneNumber: string
+  avatarURL: string
+}
+
+export const updateProfile = (data: UpdatedUserDto) => {
+  return request.put<{ user: User }>('/profile', data)
 }

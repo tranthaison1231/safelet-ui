@@ -1,5 +1,8 @@
 import axios from 'axios'
 
 export const request = axios.create({
-  baseURL: import.meta.env.VITE_BASE_API
+  baseURL: import.meta.env.VITE_BASE_API,
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+  }
 })
