@@ -38,7 +38,7 @@ function Login() {
         email,
         password
       })
-      setToken(data.token)
+      setToken(data.accessToken)
       navigate('/')
     } catch (error) {
       showError(error)
