@@ -31,8 +31,8 @@ request.interceptors.response.use(
         localStorage.setItem('accessToken', accessToken.data.accessToken)
         return request(error.config)
       } catch (error) {
-        // localStorage.removeItem('accessToken')
-        // window.location.href = '/login'
+        localStorage.removeItem('accessToken')
+        window.location.href = '/login'
       }
     }
     return Promise.reject(error)
