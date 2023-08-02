@@ -1,4 +1,4 @@
-import { getProfile, updateProfile } from '@/api/auth'
+import { getProfile, logout, updateProfile } from '@/api/auth'
 import { uploadImage } from '@/api/upload'
 import { ReactComponent as ButtonIcon } from '@/assets/svgs/button.svg'
 import { showError } from '@/utils/showError'
@@ -133,10 +133,14 @@ function UploadProfile({ onClose }: Props) {
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
-  const { data } = useQuery('profile', () => getProfile())
+  const { data } = useQuery('profile', {
+    queryFn: getProfile
+  })
+  const { mutateAsync: logoutMutate } = useMutation(logout)
 
   const navigate = useNavigate()
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await logoutMutate()
     removeToken()
     navigate('/login')
   }

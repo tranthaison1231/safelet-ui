@@ -8,12 +8,18 @@ export interface RegisterParams {
   phoneNumber: string
 }
 
+enum Role {
+  admin = 'admin',
+  user = 'user'
+}
+
 export interface User {
   _id: number
   email: string
   firstName: string
   avatarURL: string
   lastName: string
+  role: Role
 }
 
 export const signIn = (data: { email: string; password: string }) => {
@@ -55,4 +61,8 @@ interface UpdatedUserDto {
 
 export const updateProfile = (data: UpdatedUserDto) => {
   return request.put<{ user: User }>('/profile', data)
+}
+
+export const logout = () => {
+  return request.put('/logout')
 }

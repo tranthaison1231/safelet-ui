@@ -1,4 +1,4 @@
-import { signIn } from '@/api/auth'
+import { getProfile, signIn } from '@/api/auth'
 import bg from '@/assets/images/left-bg.png'
 import logo from '@/assets/images/logo.png'
 import Button from '@/components/Button'
@@ -7,7 +7,7 @@ import Input from '@/components/Input'
 import { showError } from '@/utils/showError'
 import { setToken } from '@/utils/token'
 import { validator } from '@/utils/validator'
-import { useMutation } from 'react-query'
+import { useMutation, useQuery } from 'react-query'
 import type { SubmitHandler } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
@@ -19,6 +19,11 @@ interface Inputs {
 
 function Login() {
   const { isLoading, mutateAsync: signInMutate } = useMutation(signIn)
+  const query = useQuery('profile', {
+    enabled: false,
+    queryFn: getProfile,
+    staleTime: 10000
+  })
   const navigate = useNavigate()
   const {
     register,
@@ -39,7 +44,12 @@ function Login() {
         password
       })
       setToken(data.accessToken)
-      navigate('/')
+      const profile = await query.refetch()
+      if (profile.data?.data.user.role === 'admin') {
+        navigate('/')
+      } else {
+        showError('You are not admin')
+      }
     } catch (error) {
       showError(error)
     }
