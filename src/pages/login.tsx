@@ -38,7 +38,7 @@ function Login() {
   })
 
   const handleGoogleLogin = () => {
-    window.location.href = 'http://localhost:3000/api/auth/ext/google'
+    window.location.href = `${import.meta.env.VITE_BASE_API}/auth/ext/google`
   }
 
 
