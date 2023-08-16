@@ -37,6 +37,11 @@ function Login() {
     mode: 'onBlur'
   })
 
+  const handleGoogleLogin = () => {
+    window.location.href = 'http://localhost:3000/api/auth/ext/google'
+  }
+
+
   const onSubmit: SubmitHandler<Inputs> = async ({ email, password }: Inputs) => {
     try {
       const { data } = await signInMutate({
@@ -94,6 +99,9 @@ function Login() {
             Login
           </Button>
         </form>
+        <Button className="w-52 mt-12" intent="primary" loading={isLoading} onClick={handleGoogleLogin}>
+          Google Login
+        </Button>
       </div>
     </div>
   )
