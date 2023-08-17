@@ -51,7 +51,7 @@ export const resetPassword = (data: ResetPasswordParams) => {
 }
 
 export const getProfile = () => {
-  return request.get<{ user: User }>('/profile')
+  return request.get<User>('/profile')
 }
 
 interface UpdatedUserDto {

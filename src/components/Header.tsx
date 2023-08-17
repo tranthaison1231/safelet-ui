@@ -151,8 +151,8 @@ export default function Header() {
         className: 'cursor-pointer'
       })}
       <div className="relative flex items-center h-12 gap-2 py-2 pl-4 pr-2 bg-black cursor-pointer rounded-3xl group ">
-        <span className="text-white min-w-[64px]">{getFullName(data?.data.user)}</span>
-        <Avatar url={data?.data.user.avatarURL ?? ''} />
+        <span className="text-white min-w-[64px]">{getFullName(data?.data)}</span>
+        <Avatar url={data?.data.avatarURL ?? ''} />
         <div className="absolute right-0 min-w-[120px] border border-gray-200 rounded-md shadow-md top-full dropdown p-2 hidden group-hover:flex flex-col bg-white z-999">
           <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger>

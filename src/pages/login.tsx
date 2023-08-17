@@ -50,12 +50,14 @@ function Login() {
       })
       setToken(data.accessToken)
       const profile = await query.refetch()
-      if (profile.data?.data.user.role === 'admin') {
+      if (profile.data?.data?.role === 'admin') {
         navigate('/')
+        console.log(12412)
       } else {
         showError('You are not admin')
       }
     } catch (error) {
+      console.log(error, 'error')
       showError(error)
     }
   }
